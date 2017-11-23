@@ -1,0 +1,325 @@
+{% extends 'myweb/shopbase.html' %}
+{% load static from staticfiles %}
+
+{% block myloadcss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/web/css/detail.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/web/css/detail-app.css' %}">
+{% endblock %}
+
+{% block mainbody %}
+<!-- 主内容区域 -->
+  <div class="page-detail app-detail">
+    <div class="container">
+      <!-- 面包屑 导航 -->
+      <div class="ml-nav hidden-xs hidden-sm">
+        <ol class="breadcrumb">
+          <li><a href="./index.html">首页</a></li>
+          <li><a href="#"> 魅蓝 X</a></li>
+        </ol>
+      </div>
+     <!-- 面包屑 导航 E-->
+    <!-- 产品购买 -->
+    <div class="row">
+      <div class="col-md-5 col-sm-12 col-xs-12">
+        <div class="preview">
+          <!-- Tab panes -->
+          <div class="tab-content preview-booth pt10">
+            <div role="tabpanel" class="tab-pane active mod-pic" id="list-p1">
+              <img  src="/static/goods/{{ goods.picname }}" width="375" height="375"  class="sImg">
+            </div>
+          </div>
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs preview-thumb clearfix " role="tablist">
+            <li role="presentation" class="active">
+              <a href="#list-p1" aria-controls="list-p1" role="tab" data-toggle="tab">
+                <img  src="/static/goods/s_{{ goods.picname }}" style="display: inline;" width="75" height="75">
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#list-p2" aria-controls="list-p2" role="tab" data-toggle="tab">
+                <img  src="/static/goods/s_{{ goods.picname }}" style="display: inline;" width="75" height="75">
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#list-p3" aria-controls="list-p3" role="tab" data-toggle="tab">
+                <img  src="/static/goods/s_{{ goods.picname }}" style="display: inline;" width="75" height="75">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-7 col-sm-12 col-xs-12 pt10">
+        <div class="property hidden-xs hidden-sm" id="property">
+             <div class="property-hd">
+                   <h1>{{ goods.goods }}</h1>
+                   <p class="mod-info active">10周年店庆大甩卖，全场消费满800减800元</p>
+             </div>
+             <div class="property-sell">
+                 <dl class="property-sell-price clearfix">
+                     <dt class="vm-metatit" id="J_discountTag">价<span class="s-space"></span><span class="s-space"></span>格：
+                     </dt>
+                     <dd>
+                         <div class="mod-price">
+                             <small>￥</small>
+                             <span id="J_price" class="vm-money">{{ goods.price }}</span>
+                         </div>
+                         <div class="mod-original" id="J_originalPrice" style="display:none;"></div>
+                         <div class="mod-activity">
+                         </div>
+                         <div class="mod-countdown" id="J_discountCountDown" style="display:none;">
+                         </div>
+                     </dd>
+                 </dl>
+                 <dl class="property-sell-coupon clearfix" id="J_prodPromo" style="">
+                     <dt class="vm-metatit">领<span class="s-space"></span><span class="s-space"></span>券：
+                     </dt>
+                     <dd>
+                         <p id="J_promoInner">
+                         <span class="vm-tag multiple"><em>满699减10.00</em></span></p>
+                         <a class="vm-more" data-mtype="store_de_coupon_more" id="J_promoMore" href="#">更多&gt;</a>
+                     </dd>
+                 </dl>
+             </div>
+          <div class="property-sibling">
+            <dl data-property="型号" class="property-sibling-item">
+              <dt class="vm-metatit">
+                     型<span class="s-space"></span><span class="s-space"></span>号：
+              </dt>
+              <dd class="clearfix">
+                <a href="#" data-itemid="10478" class="prop" data-mtype="store_de_sib_1">魅蓝 Max</a>
+                <a href="javascript:;" data-itemid="10636" class="prop selected" data-mtype="store_de_sib_2">魅蓝 X</a>
+              </dd>
+            </dl>
+          </div>
+          <div class="property-set">
+            <dl class="property-set-sale" data-property="网络类型">
+              <dt class="vm-metatit">网络类型：</dt>
+              <dd class="clearfix">
+                <a data-value="14:18238" data-mtype="store_de_sp_1_1" href="#" title="全网通公开版" class="selected">
+                  <span>全网通公开版</span>
+                </a>
+              </dd>
+            </dl>
+            <dl class="property-set-sale" data-property="颜色分类">
+              <dt class="vm-metatit">颜色分类：</dt>
+              <dd class="clearfix">
+                <a data-value="3:22218" class="vm-sale-img selected" data-mtype="store_de_sp_2_1" href="#" title="流光金">
+                  <img src="{% static 'myweb/web/img/vm4.png' %}"width="32" height="32">
+                  <span>流光金</span>
+                </a>
+                <a data-value="3:22219" class="vm-sale-img" data-mtype="store_de_sp_2_2" href="#" title="珠光白">
+                  <img src="{% static 'myweb/web/img/vm5.png' %}"width="32" height="32">
+                  <span>珠光白</span>
+                </a>
+            </dd>
+            </dl>
+            <dl class="property-set-sale" data-property="内存容量">
+                <dt class="vm-metatit">内存容量：</dt>
+                <dd class="clearfix">
+                    <a data-value="13:37" data-mtype="store_de_sp_3_1" href="#" title="32GB" class="selected">
+                      <span>32GB</span>
+                    </a>
+                </dd>
+            </dl>
+          </div>
+          <div class="property-service">
+            <dl class="property-service-item clearfix">
+                <dt class="vm-metatit">支<span class="s-space"></span><span class="s-space"></span>持：
+                </dt>
+                <dd class="mod-bd" id="J_prodService">
+                  <span><i class="glyphicon glyphicon-ok-circle" aria-hidden="true"></i>花呗分期</span>
+                  <span><a href="#" target="_blank"><i class="glyphicon glyphicon-ok-circle" aria-hidden="true"></i>百城速达</a></span>
+                  <span><i class="glyphicon glyphicon-ok-circle" aria-hidden="true"></i>顺丰包邮</span>
+                  <span><i class="glyphicon glyphicon-ok-circle" aria-hidden="true"></i>7天无理由退货</span>
+               </dd>
+            </dl>
+            <dl class="property-service-suda clearfix" id="J_delivery">
+              <dt class="vm-metatit">配送<span class="s-space"></span>至：</dt>
+              <dd class="mod-site clearfix">
+                <div id="site-selector" class="site-selector">
+                  <div class="text">广东 广州市 【请选择】</div>
+                </div>
+              </dd>
+            </dl>
+            <dl class="property-service-provider clearfix">
+              <dt class="vm-metatit">服<span class="s-space"></span><span class="s-space"></span>务：
+              </dt>
+              <dd class="clearfix">
+                 <span id="J_installmentInfo"></span>
+                     本商品由 魅族 负责发货并提供售后服务
+              </dd>
+            </dl>
+          </div>
+          <div class="property-huabei clearfix">
+            <div class="vm-metatit">花呗分期：</div>
+            <div class="clearfix property-huabei-bd" id="J_huabeiBody">
+              <a data-value="3" class="prop" data-mtype="store_de_hb_3">
+                  <span class="vm-periods">￥499.67×3期</span>
+                  <span class="vm-rate">免手续费</span>
+              </a>
+              <a data-value="6" class="prop" data-mtype="store_de_hb_6">
+                  <span class="vm-periods">￥261.08×6期</span>
+                     <span class="vm-rate">含手续费11.24/期</span>
+              </a>
+              <a data-value="12" class="prop" data-mtype="store_de_hb_12">
+                  <span class="vm-periods">￥134.29×12期</span>
+                     <span class="vm-rate">含手续费9.37/期</span>
+              </a>
+            </div>
+            <a href="//hd.meizu.com/rules/huabei.html" target="_blank" class="vm-desc">
+               <i class="iconfont-detail icon-question"></i>
+               什么是花呗分期
+            </a>
+          </div>
+          <form action="{% url 'shopcartadd' goods.id %}" method="post">
+          {% csrf_token %}
+          <div class="property-buy">
+            <p class="vm-message" id="J_message"></p>
+            <dl class="property-buy-quantity">
+                <dt class="vm-metatit">数<span class="s-space"></span>
+                <span class="s-space"></span>量：</dt>
+                <dd class="clearfix">
+                    <div class="mod-control">
+                       <a title="减少" href="javascript:document.getElementById('J_quantity').value--;" class="vm-minus disabled">-</a>
+                       <input value="1"  name="m" id="J_quantity" data-max="5" type="text">
+                       <a title="增加" href="javascript:document.getElementById('J_quantity').value++;" class="vm-plus">+</a>
+                    </div>
+                </dd>
+            </dl>
+            <div class="property-buy-action">
+                  <button data-mtype="store_de_buy" type="submit" id="J_btnBuy" class="btn btn-danger btn-lg mr20">立即购买</button>
+            </div>
+          </form>
+          </div>
+        </div>   
+        <div id="prod" class="prod">
+          <div class="prod-info">
+            <div class="prod-info-header">
+                <h1 class="vm-title">魅蓝 X</h1>
+            </div>
+            <div class="prod-info-price">
+                <div class="mod-price">
+                    <small>￥ </small><span id="J_price" class="vm-money">1499.00</span>
+                </div>
+                <div class="mod-original" id="J_originalPrice" style="display:none">
+                </div>
+                <div class="mod-countdown" id="J_discountCountDown" style="display:none">
+                </div>
+            </div>
+            <div class="prod-info-installment" id="J_prodInstallment" style="display: block;">
+                分期价 ￥<span class="vm-price">134.29</span>x<span class="vm-period">12</span>期<span class="vm-rate"></span>
+            </div>
+            <div class="prod-info-message">
+                <p class="active">32G直降200元 原价1699元 高清屏安全快充 </p>
+            </div>
+          </div>
+          <div class="prod-service" id="J_prodService">
+            <ul>
+              <li><i class="glyphicon glyphicon-ok-circle"></i>花呗分期</li>
+              <li><i class="glyphicon glyphicon-ok-circl"></i>百城速达</li>
+              <li><i class="glyphicon glyphicon-ok-circle"></i>顺丰包邮</li>
+              <li><i class="glyphicon glyphicon-ok-circle"></i>7天无理由退货</li>
+            </ul>
+            <i class="glyphicon glyphicon-menu-right icon-enter" id="J_prodPromoEnter"></i>
+          </div>
+          <div class="prod-selected" id="J_prodSelected">
+            <label>已选</label>
+            <p>
+                <span class="vm-props s-selected" id="J_selectedProps">全网通公开版,流光金,32GB</span>
+                <span class="vm-quantity" id="J_selectedQuantity" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">×1</span>
+            </p>
+            <i class="glyphicon glyphicon-menu-right icon-enter" id="J_prodPromoEnter"></i>
+          </div>
+          <div class="prod-suda" id="J_prodSuda">
+            <div class="prod-suda-selector" id="J_sudaSelector">
+                <label>送至</label>
+                <span id="J_siteText" class="">广东 广州市</span>
+                <i class="glyphicon glyphicon-menu-right icon-enter" id="J_prodPromoEnter"></i>
+            </div>
+            <div class="prod-suda-info" style="display:none;">
+              <p class="mod-bd">
+                <span id="J_siteStatus"></span>
+                <span id="J_installmentInfo"></span>
+              </p>
+            </div>
+            <div class="prod-suda-supplier">
+              <p class="mod-bd">
+                本商品由<em>魅族</em>负责发货并提供售后服务
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+    <!-- 产品购买 -->
+    </div>
+    <!-- 漂浮的导航 -->
+    <div class="detail-tab anim detail-fast-float" id="detailFast">
+        <div class="fixed-container">
+            <ul class="clearfix">
+                <li class="">
+                    <a href="javascript:void(0);">商品详情</a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);">规格参数</a>
+                </li>
+                    <li class="current">
+                        <a href="javascript:void(0);">常见问题</a>
+                    </li>
+            </ul>
+            <div class="shortcut trans">
+                <div class="shortcut-con trans">
+                    <div class="mod-buy">
+                        <a data-mtype="store_de_buynow" href="javascript:void(0);" id="J_btnBuyShortcut" class="btn btn-primary btn-lg"><i></i>现在购买</a>
+                    </div>
+                    <div class="mod-total trans">
+                    魅蓝 X<em class="vm-price" id="J_totalPriceShortcut">￥2998.00</em>
+                        <p class="vm-title" id="J_summaryName">全网通公开版 珠光白 32GB</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mod-title">
+            </div>
+        </div>
+    </div><!-- 漂浮的导航 E-->
+    <!-- 产品详情 -->
+    <div class="row detail" id="detail">
+      <div class="detail" style="height:62px;">
+        <div class="detail-tab" id="detailTabFixed">
+          <div class="fixed-container">
+            <ul class="clearfix" style="display: block;">
+                <li class="current">
+                    <a data-mtype="store_de_xq_1" href="javascript:void(0);">商品详情</a>
+                </li>
+                <li class="">
+                    <a data-mtype="store_de_xq_2" href="javascript:void(0);">规格参数</a>
+                </li>
+                <li class="">
+                    <a data-mtype="store_de_xq_3" href="javascript:void(0);">常见问题</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="detail-content container">
+          <div class="introduce current" id="introduce">
+              <img src="{% static 'myweb/web/img/mlx7.jpg' %}" class="pc-detial-intr">
+              <img src="{% static 'myweb/web/img/mlx8.jpg' %}"  class="pc-detial-intr">
+              <img src="{% static 'myweb/web/img/mlx9.jpg' %}" class="pc-detial-intr">
+              <img src="{% static 'myweb/web/img/mlx10.jpg' %}" class="pc-detial-intr">
+              <img src="{% static 'myweb/web/img/mlx11.jpg' %}" class="pc-detial-intr">
+              <img src="{% static 'myweb/web/img/mlx12.jpg' %}" class="pc-detial-intr">
+              <img src="{% static 'myweb/web/img/mlx13.jpg' %}" class="pc-detial-intr">
+              <img src="{% static 'myweb/web/img/mlx14.jpg' %}" class="pc-detial-intr">
+              <img src="{% static 'myweb/web/img/app/m5.jpg' %}" class="app-detial-intr">
+              <img src="{% static 'myweb/web/img/app/m8.jpg' %}" class="app-detial-intr">
+              <img src="{% static 'myweb/web/img/app/m9.jpg' %}" class="app-detial-intr">
+              <img src="{% static 'myweb/web/img/app/m6.jpg' %}" class="app-detial-intr">
+          </div>
+      </div>
+    </div><!-- 产品详情 E-->
+  </div>
+{% endblock %}
+
+

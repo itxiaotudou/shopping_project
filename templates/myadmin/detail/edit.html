@@ -1,0 +1,45 @@
+{% extends "myadmin/base.html" %}
+{% block mainbody %}                
+    <h3>
+        会员信息管理
+    </h3>
+    <form id="edit-profile" action="{% url 'myadmin_detailupdate' user.id %}" class="form-horizontal" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>编辑订单详情信息</legend>
+           <div class="control-group">
+                <label class="control-label" for="input01">订单id号:</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="orderid" class="input-xlarge" id="input01" value="{{ user.orderid }}" />
+                </div>
+            </div>
+             <div class="control-group">
+                <label class="control-label" for="input01">商品id号:</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="goodsid" class="input-xlarge" id="input01" value="{{ user.goodsid }}" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="input01">商品名称:</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="name" class="input-xlarge" id="input01" value="{{ user.name }}" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="input01">单价:</label>
+                <div class="controls">
+                    <input type="text" name="price" class="input-xlarge" id="input01" value="{{ user.price }}" />
+                </div>
+            </div>
+             <div class="control-group">
+                <label class="control-label" for="input01">数量:</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="num" class="input-xlarge" id="input01" value="{{ user.num }}" />
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">保存</button> <button type="reset" class="btn">重置</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

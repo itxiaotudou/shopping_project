@@ -1,0 +1,56 @@
+{% extends "myadmin/base.html" %}
+{% block mainbody %}                
+    <h3>
+        会员信息管理
+    </h3>
+    <form id="edit-profile" action="{% url 'myadmin_ordersupdate' user.id %}" class="form-horizontal" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>编辑订单信息</legend>
+             
+           <div class="control-group">
+                <label class="control-label" for="input01">联系人：</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="linkman" class="input-xlarge" id="input01" value="{{ user.linkman }}" />
+                </div>
+            </div>
+             <div class="control-group">
+                <label class="control-label" for="input01">地址：</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="address" class="input-xlarge" id="input01" value="{{ user.address }}" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="input01">邮编：</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="code" class="input-xlarge" id="input01" value="{{ user.code }}" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="input01">电话：</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="phone" class="input-xlarge" id="input01" value="{{ user.phone }}" />
+                </div>
+            </div>
+             <div class="control-group">
+                <label class="control-label" for="input01">总金额：</label>
+                <div class="controls">
+                    <input type="text" readonly="readonly" name="total" class="input-xlarge" id="input01" value="{{ user.total }}" />
+                </div>
+            </div>
+           
+            <div class="control-group">
+                <label class="control-label" for="input01">状态：</label>
+                <div class="controls">
+                    <input type="radio" {% if user.status == 0 %} checked {% endif %}name="status" class="input-xlarge" id="input01" value="0" /> 新订单 
+                    <input type="radio" {% if user.status == 1 %} checked {% endif %}name="status" class="input-xlarge" id="input01" value="1" /> 已发货
+                    <input type="radio" {% if user.status == 2 %} checked {% endif %}name="status" class="input-xlarge" id="input01" value="2" /> 已收货
+                    <input type="radio" {% if user.status == 3 %} checked {% endif %}name="status" class="input-xlarge" id="input01" value="3" /> 无效订单
+                </div>
+            </div>                        
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">保存</button> <button type="reset" class="btn">重置</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

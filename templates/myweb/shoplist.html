@@ -1,0 +1,149 @@
+{% extends 'myweb/shopbase.html' %}
+{% load static from staticfiles %}
+{% block myloadcss %}
+  <link rel="stylesheet" type="text/css" href="{% static 'myweb/web/css/list.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'myweb/web/css/list-app.css' %}">
+{% endblock %}
+{% block mainbody %}
+    <div class="container">
+      <!-- 面包屑 导航 -->
+      <div class="ml-nav hidden-xs hidden-sm">
+            <ol class="breadcrumb">
+              <li><a href="./index.html">首页</a></li>
+              <li><a href="#">全部商品</a></li>
+            </ol>
+      </div>
+      <!-- 面包屑 导航 E-->
+      <!-- 分类列表 -->
+      <div class="selector hidden-xs hidden-sm">
+      <div class="sl-category">
+        <div class="sl-line-wrap clearfix">
+          <div class="mod-key">分类：</div>
+          <div class="mod-value">
+            <div class="mod-value-list">
+              <ul>
+                <li class="">
+                  <a href="javascript:void(0)" title="全部">全部</a>
+                </li>
+                <li class="">
+                  <a href="javascript:void(0)" title="魅族系列">魅族系列</a>
+                </li>
+                <li class="">
+                  <a href="javascript:void(0)" title="魅蓝系列">魅蓝系列</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="sl-line-wrap clearfix">
+            <div class="mod-key">屏幕尺寸</div>
+            <div class="mod-value">
+              <div class="mod-value-list">
+                <ul>
+                      <li class="">
+                        <a href="javascript:void(0)" title="全部">全部</a>
+                      </li>
+                      <li class="">
+                        <a href="javascript:void(0)" title="5.0尺寸">5.0尺寸</a>
+                      </li>
+                      <li class="">
+                        <a href="javascript:void(0)" title="5.2尺寸">5.2尺寸</a>
+                      </li>
+                      <li class="">
+                        <a href="javascript:void(0)" title="5.5尺寸">5.5尺寸</a>
+                      </li>
+                      <li class="">
+                        <a href="javascript:void(0)" title="5.7尺寸">5.7尺寸</a>
+                      </li>
+                      <li class="">
+                        <a href="javascript:void(0)" title="6.0尺寸">6.0尺寸</a>
+                      </li>
+                </ul>
+              </div>
+            </div>
+          </div>     
+        </div>
+      </div>
+      <!-- 分类列表 E -->
+      <!-- 分类导航 -->
+      <div class="filter clearfix hidden-xs hidden-sm" style="display:block">
+        <div class="filter-order">
+          <a class="active" data-tag="0" data-mtype="store_list_sx_1" href="javascript:void(0);">
+              推荐
+          </a>
+          <a data-tag="1" data-mtype="store_list_sx_2" href="javascript:void(0);">
+              新品
+          </a>
+          <a data-tag="2" data-mtype="store_list_sx_3" href="javascript:void(0);">
+              价格<i class="icon-arrow-down"></i>
+          </a>
+        </div>
+        <div class="filter-condition" >
+          <label class="bs-checkbox" data-mtype="store_list_sx_xz">
+              <i></i>仅显示有货商品
+          </label>
+        </div>
+      </div>
+      <!-- 分类导航 E -->
+
+      <!-- 商品列表 -->
+      <div class="goods-list">
+        <div class="row">
+         {% for goods in goodslist %}
+          <div class="col-md-3 col-sm-6 col-xs-6">
+            <div class="gl-item">
+              <div class="compare-btn-list" >
+                  <i class="iconfont  icon-duibi compare-duibi"></i>
+                  <span class="hidden-xs hidden-sm">对比</span>
+              </div>
+              <div class="gl-item-wrap">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active mod-pic" id="list-p1">
+                    <a href="{% url 'shopmeilanx' goods.id %}">
+                      <img class="lazy j-modProduct" src="/static/goods/m_{{ goods.picname }}" width="220" height="220">
+                    </a>
+                  </div>
+                  
+                </div>
+                <!-- Nav tabs -->
+                <div class="item-slide j-pro-wrap  hidden-xs hidden-sm">
+                  <ul class="nav nav-tabs  " role="tablist">
+                    <li role="presentation" class="active">
+                      <a href="#list-p1" aria-controls="list-p1" role="tab" data-toggle="tab">
+                        <img class="lazy"  src="/static/goods/s_{{ goods.picname }}" style="display: inline;" width="40" height="40">
+                      </a>
+                    </li>
+                    <li role="presentation">
+                      <a href="#list-p2" aria-controls="list-p2" role="tab" data-toggle="tab">
+                        <img class="lazy"  src="/static/goods/s_{{ goods.picname }}" style="display: inline;" width="40" height="40">
+                      </a>
+                    </li>
+                     <li role="presentation">
+                      <a href="#list-p2" aria-controls="list-p2" role="tab" data-toggle="tab">
+                        <img class="lazy"  src="/static/goods/s_{{ goods.picname }}" style="display: inline;" width="40" height="40">
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="slide-btn j-modBtns" style="display: none;">
+                    <span  class="prev iconfont disabled"></span>
+                    <span  class="next iconfont"></span>
+                </div>
+                <h3 class="red" title="现货速发  双瞳如小窗 佳景观历历">
+                {{ goods.goods }}
+                </h3>
+                <dd class="mod-price">
+                    <span>￥</span>
+                    <span class="vm-price">{{ goods.price }}</span>
+                    <span class="vm-start">起</span>
+                </dd>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+{% endblock %}

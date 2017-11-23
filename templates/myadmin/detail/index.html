@@ -1,0 +1,55 @@
+{% extends "myadmin/base.html" %}
+{% block mainbody %}                
+    <h4>
+        订单管理
+    </h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>订单id号</th>
+                <th>商品id号</th>
+                <th>商品名称</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vo in detaillist %}
+            <tr>
+                <td>{{ vo.orderid }}</td>
+                <td>{{ vo.goodsid }}</td>
+                <td>{{ vo.name }}</td>
+                <td>{{ vo.price }}</td>
+                <td>{{ vo.num }}</td>
+                <td>
+                    <!-- <a href="{% url 'myadmin_detaildel' vo.id %}" class="view-link">删除</a> -->
+                    <a href="{% url 'myadmin_detailedit' vo.id %}" class="view-link">编辑</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>                
+    <div class="pagination">
+        <ul>
+            <li class="disabled">
+                <a href="#">&laquo;</a>
+            </li>
+            <li class="active">
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">3</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
